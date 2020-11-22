@@ -1,12 +1,58 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <p><router-link to="/">home</router-link></p>
+        <p><router-link to="/tiao">点我跳转</router-link></p>
+        <p><router-link to="/dian">我也可以跳转哦</router-link></p>
+
+        <router-view></router-view>
+
+        <IF></IF>
+        <hr />
+        <hr />
+        <Show></Show>
+        <hr />
+        <hr />
+        <Bind></Bind>
+        <hr />
+        <hr />
+        <On></On>
+        <hr />
+        <hr />
+
+        <h3 :title="123" @click="fang">emit 例子</h3>
+        <EmitProps :a="value" @suibian="fang"></EmitProps>
     </div>
-    <router-view/>
-  </div>
 </template>
+
+<script>
+import IF from './views/v-if.vue';
+import Show from './views/v-show.vue';
+import Bind from './views/v-bind.vue';
+import On from './views/v-on.vue';
+import EmitProps from './views/emit-props.vue';
+
+export default {
+    name: 'App',
+    components: {
+        IF,
+        Show,
+        Bind,
+        On,
+        EmitProps,
+    },
+    data() {
+        return {
+            value: '我传给子组件的值',
+        };
+    },
+
+    methods: {
+        fang(e) {
+            console.log('来自父组件的打印', e);
+        },
+    },
+};
+</script>
 
 <style lang="stylus">
 #app
